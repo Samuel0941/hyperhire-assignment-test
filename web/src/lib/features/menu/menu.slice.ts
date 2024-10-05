@@ -1,11 +1,11 @@
+import axios from "@/lib/axios";
+import { ResetApiState } from "@/lib/redux.type";
 import {
   ActionReducerMapBuilder,
   createAsyncThunk,
   createSlice,
 } from "@reduxjs/toolkit";
 import { IMenu, MenuStateTypes } from "./menu.util";
-import axios from "@/lib/axios";
-import { ResetApiState } from "@/lib/redux.type";
 
 const name = "menu";
 const extraActions = createExtraActions();
@@ -116,7 +116,7 @@ function createExtraReducers(builder: ActionReducerMapBuilder<MenuStateTypes>) {
 
   function createMenu() {
     return {
-      ...builder.addCase(extraActions.createMenu.pending, (state, action) => {
+      ...builder.addCase(extraActions.createMenu.pending, (state) => {
         state.createMenu = {
           loading: true,
           payload: null,
@@ -145,7 +145,7 @@ function createExtraReducers(builder: ActionReducerMapBuilder<MenuStateTypes>) {
 
   function editMenu() {
     return {
-      ...builder.addCase(extraActions.editMenu.pending, (state, action) => {
+      ...builder.addCase(extraActions.editMenu.pending, (state) => {
         state.editMenu = {
           loading: true,
           payload: null,
@@ -174,7 +174,7 @@ function createExtraReducers(builder: ActionReducerMapBuilder<MenuStateTypes>) {
 
   function deleteMenu() {
     return {
-      ...builder.addCase(extraActions.deleteMenu.pending, (state, action) => {
+      ...builder.addCase(extraActions.deleteMenu.pending, (state) => {
         state.deleteMenu = {
           loading: true,
           payload: null,
@@ -203,7 +203,7 @@ function createExtraReducers(builder: ActionReducerMapBuilder<MenuStateTypes>) {
 
   function getMenus() {
     return {
-      ...builder.addCase(extraActions.getMenus.pending, (state, action) => {
+      ...builder.addCase(extraActions.getMenus.pending, (state) => {
         state.menus = {
           loading: true,
           payload: [],
@@ -232,7 +232,7 @@ function createExtraReducers(builder: ActionReducerMapBuilder<MenuStateTypes>) {
 
   function getMenu() {
     return {
-      ...builder.addCase(extraActions.getMenu.pending, (state, action) => {
+      ...builder.addCase(extraActions.getMenu.pending, (state) => {
         state.menu = {
           loading: true,
           payload: undefined,

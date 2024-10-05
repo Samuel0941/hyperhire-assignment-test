@@ -20,10 +20,11 @@ const MenuComponent = () => {
 
   const dispatch = useAppDispatch();
   const { menus, menu } = useAppSelector((state) => state.menu);
-  const { createItem, editItem, deleteItem, items, cachedTreeItems } =
-    useAppSelector((state) => state.item);
+  const { createItem, editItem, items, cachedTreeItems } = useAppSelector(
+    (state) => state.item
+  );
 
-  const [expandedKeys, setExpandedKeys] = useState<any>([]);
+  const [expandedKeys, setExpandedKeys] = useState<string[]>([]);
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
   const [selectedItem, setSelectedItem] = useState<null | IItem>(null);
 
@@ -31,13 +32,13 @@ const MenuComponent = () => {
 
   useEffect(() => {
     dispatch(MenuActions.getMenus({}));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (!menu.loading && menu.successful && menu.payload) {
       dispatch(ItemActions.updateCachedTreeItems(menu.payload.items));
     }
-  }, [menu]);
+  }, [menu, dispatch]);
 
   useEffect(() => {
     if (!items.loading && items.successful && items.payload) {
@@ -48,7 +49,7 @@ const MenuComponent = () => {
         setExpandAll(false);
       }
     }
-  }, [items]);
+  }, [items, dispatch]);
 
   const fetchNextLevelItems = (parentId: string) => {
     let item: any = null;

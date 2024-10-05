@@ -131,7 +131,7 @@ function createExtraReducers(builder: ActionReducerMapBuilder<ItemStateTypes>) {
 
   function createItem() {
     return {
-      ...builder.addCase(extraActions.createItem.pending, (state, action) => {
+      ...builder.addCase(extraActions.createItem.pending, (state) => {
         state.createItem = {
           loading: true,
           payload: null,
@@ -162,7 +162,7 @@ function createExtraReducers(builder: ActionReducerMapBuilder<ItemStateTypes>) {
 
   function editItem() {
     return {
-      ...builder.addCase(extraActions.editItem.pending, (state, action) => {
+      ...builder.addCase(extraActions.editItem.pending, (state) => {
         state.editItem = {
           loading: true,
           payload: null,
@@ -196,7 +196,7 @@ function createExtraReducers(builder: ActionReducerMapBuilder<ItemStateTypes>) {
 
   function deleteItem() {
     return {
-      ...builder.addCase(extraActions.deleteItem.pending, (state, action) => {
+      ...builder.addCase(extraActions.deleteItem.pending, (state) => {
         state.deleteItem = {
           loading: true,
           payload: null,
@@ -229,7 +229,7 @@ function createExtraReducers(builder: ActionReducerMapBuilder<ItemStateTypes>) {
 
   function getItems() {
     return {
-      ...builder.addCase(extraActions.getItems.pending, (state, action) => {
+      ...builder.addCase(extraActions.getItems.pending, (state) => {
         state.items = {
           loading: true,
           payload: [],
@@ -263,7 +263,7 @@ function createExtraReducers(builder: ActionReducerMapBuilder<ItemStateTypes>) {
 
   function getItem() {
     return {
-      ...builder.addCase(extraActions.getItem.pending, (state, action) => {
+      ...builder.addCase(extraActions.getItem.pending, (state) => {
         state.item = {
           loading: true,
           payload: undefined,
@@ -306,7 +306,7 @@ function createExtraReducers(builder: ActionReducerMapBuilder<ItemStateTypes>) {
 
   function resetCachedTreeItems() {
     return {
-      ...builder.addCase(extraActions.resetCachedTreeItems, (state, action) => {
+      ...builder.addCase(extraActions.resetCachedTreeItems, (state) => {
         state.cachedTreeItems = [];
       }),
     };

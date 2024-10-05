@@ -11,6 +11,11 @@ const AddMenuComponent = () => {
   const [open, setOpen] = useState(false);
   const [form] = Form.useForm();
 
+  const handleOk = () => {
+    form.resetFields();
+    setOpen(false);
+  };
+
   useEffect(() => {
     if (!createMenu.loading && createMenu.successful) {
       form.resetFields();
@@ -18,12 +23,7 @@ const AddMenuComponent = () => {
 
       handleOk();
     }
-  }, [createMenu]);
-
-  const handleOk = () => {
-    form.resetFields();
-    setOpen(false);
-  };
+  }, [createMenu, form, dispatch]);
 
   const Submit = (value: any) => {
     dispatch(MenuActions.createMenu(value));
