@@ -32,7 +32,6 @@ const AddMenuComponent = () => {
   return (
     <>
       <Button
-        className=""
         type="text"
         loading={createMenu.loading}
         onClick={() => setOpen(true)}

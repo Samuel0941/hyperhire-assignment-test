@@ -208,6 +208,14 @@ const MenuComponent = () => {
 
   return (
     <div className="flex-grow h-screen flex flex-col p-[24px]">
+      <Image
+        className="block sm:hidden"
+        src="/menu_expand_icon.svg"
+        alt="My SVG Image"
+        width={24}
+        height={24}
+      />
+
       <div className="h-[74px] flex items-center space-x-2">
         <Image
           src="/folder_icon.svg"
@@ -221,24 +229,31 @@ const MenuComponent = () => {
         <span className="text-black">Menus</span>
       </div>
 
-      <div className="h-[84px] flex items-center space-x-2">
-        <Image src="/menu_icon.svg" alt="My SVG Image" width={52} height={52} />
+      <div className="hidden sm:block">
+        <div className="h-[84px] flex items-center space-x-2">
+          <Image
+            src="/menu_icon.svg"
+            alt="My SVG Image"
+            width={52}
+            height={52}
+          />
 
-        <h3 className="text-black font-bold text-xl">Menus</h3>
+          <h3 className="text-black font-bold text-xl">Menus</h3>
 
-        <AddMenuComponent />
+          <AddMenuComponent />
+        </div>
       </div>
 
-      <Select
-        className="w-[349px] mb-3"
-        placeholder="select menu"
-        loading={menus.loading || menu.loading}
-        options={menus.payload.map((e) => ({ label: e.name, value: e.id }))}
-        onSelect={onMenuSelect}
-      />
-
       <div className="grid grid-cols-2 gap-4">
-        <div className="flex flex-col space-y-5">
+        <div className="col-span-2 sm:col-span-1 flex flex-col space-y-5">
+          <Select
+            className="w-full my-1"
+            placeholder="select menu"
+            loading={menus.loading || menu.loading}
+            options={menus.payload.map((e) => ({ label: e.name, value: e.id }))}
+            onSelect={onMenuSelect}
+          />
+
           <div className="flex flex-row space-x-2">
             <button
               className="bg-[#101828] text-white text-xs h-[30px] w-[110px] rounded-[35px]"
@@ -274,7 +289,7 @@ const MenuComponent = () => {
 
         {/* FORM */}
         {selectedItem && (
-          <div className="item w-[432px]">
+          <div className=" mt-16 col-span-2 sm:col-span-1 max-w-[432px]">
             {selectedItem.id ? (
               <div className="flex justify-between">
                 <h1 className="text-gray-500 font-bold text-md">Edit Item</h1>
